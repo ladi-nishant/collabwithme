@@ -159,6 +159,36 @@ io.on('connection', (socket) => {
 
     socket.on('disconnect', () => {
         console.log('User disconnected:', socket.id);
+        if (socket.roomId && rooms.has(socket.roomId)) {
+            const roomData = rooms.get(socket.roomId);
+
+            // Remove user from the set
+            let userToRemove = null;
+            roomData.users.forEach(u => {
+                if (u.id === socket.id) userToRemove = u;
+            });
+
+            if (userToRemove) {
+                roomData.users.delete(userToRemove);
+                console.log(`User ${userToRemove.name} removed from room ${socket.roomId}`);
+            }
+
+            // If room empty, delete it. If host disconnected, assign new host or delete.
+            if (roomData.users.size === 0) {
+                rooms.delete(socket.roomId);
+            } else {
+                if (roomData.host === socket.id) {
+                    const nextUser = roomData.users.values().next().value;
+                    roomData.host = nextUser.id;
+                }
+
+                // Update all remaining users
+                io.to(socket.roomId).emit('user_list', {
+                    users: Array.from(roomData.users),
+                    hostId: roomData.host
+                });
+            }
+        }
     });
 });
 
