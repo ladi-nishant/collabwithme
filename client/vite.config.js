@@ -7,12 +7,14 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': {
-        target: 'http://localhost:5000',
+        target: 'https://collabwithme23.onrender.com',
         changeOrigin: true,
+        secure: false,
       },
       '/socket.io': {
-        target: 'http://localhost:5000',
+        target: 'https://collabwithme23.onrender.com',
         ws: true,
+        secure: false,
       },
     },
   },
