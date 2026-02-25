@@ -1,0 +1,116 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;700;800&display=swap');
+
+:root {
+  --primary: #7b2cbf;
+  --primary-dark: #5a189a;
+  --secondary: #c77dff;
+  --accent: #ff4d8d;
+
+  --bg-gradient: linear-gradient(135deg, #240046, #3c096c, #7b2cbf);
+
+  --text-dark: #1a1a2e;
+  --text-muted: #6b7280;
+  --white: #ffffff;
+
+  --shadow-sm: 0 4px 10px rgba(0, 0, 0, 0.05);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.25);
+
+  --radius: 16px;
+}
+
+/* Dark mode optional */
+.dark-mode {
+  --bg-gradient: linear-gradient(135deg, #10002b, #240046, #3c096c);
+  --text-dark: #f8fafc;
+  --text-muted: #94a3b8;
+  --white: #1e1e2f;
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body */
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg-gradient);
+  min-height: 100vh;
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* Headings */
+h1,
+h2,
+h3 {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* REMOVE GLASS EFFECT COMPLETELY */
+/* .glass-panel deleted */
+
+/* Card Style (Solid White) */
+.auth-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Button */
+.btn-primary {
+  background: linear-gradient(90deg, var(--accent), var(--primary));
+  color: white;
+  padding: 14px 24px;
+  border-radius: 50px;
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(123, 44, 191, 0.4);
+}
+
+/* Input */
+.input-field {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: var(--radius);
+  border: 1px solid #e5e7eb;
+  background: white;
+  margin-bottom: 16px;
+  outline: none;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.input-field:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(123, 44, 191, 0.15);
+}
+
+/* Gradient Title */
+.title-gradient {
+  background: linear-gradient(to right, var(--accent), var(--primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+/* Toggle link */
+.toggle-link {
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.toggle-link:hover {
+  color: var(--accent);
+}
